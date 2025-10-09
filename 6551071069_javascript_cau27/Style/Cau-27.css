@@ -1,0 +1,29 @@
+table {
+    border-collapse: collapse;
+    margin: 20px auto;
+    background-color: #d2f7bb;
+}
+
+th, td {
+    border: 1px solid #70b34f;
+    padding: 5px 10px;
+    text-align: center;
+}
+
+input[type="text"] {
+    width: 100px;
+    text-align: left;
+}
+
+input[type="button"] {
+    padding: 3px 10px;
+    background-color: #e6e6e6;
+    border: 1px solid gray;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+}
+
+input[type="button"]:hover {
+    background-color: #ffd9d9;
+}
