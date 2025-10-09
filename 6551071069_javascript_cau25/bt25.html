@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Tính tiền thực đơn</title>
+</head>
+<body style="font-family: Arial; background-color: #ffffcc;">
+
+<h2 style="text-align:center;">THỰC ĐƠN</h2>
+
+<!-- Bảng chọn món -->
+<table border="1" cellpadding="5" cellspacing="0" align="center" style="background-color:#ffff99;">
+<tr>
+  <th>Thức ăn</th>
+  <th>Nước uống</th>
+  <th>Thời điểm</th>
+</tr>
+<tr>
+  <td>
+    <select id="food" multiple size="7">
+      <option value="20000">Bún bò</option>
+      <option value="18000">Hủ tiếu</option>
+      <option value="20000">Bánh canh</option>
+      <option value="25000">Phở bò</option>
+      <option value="15000">Nui</option>
+      <option value="18000">Bánh mì thịt</option>
+      <option value="20000">Bánh cuốn</option>
+    </select>
+  </td>
+  <td>
+    <select id="drink" multiple size="7">
+      <option value="12000">Cà phê đá</option>
+      <option value="15000">Cà phê sữa đá</option>
+      <option value="13000">Chanh dây</option>
+      <option value="10000">Chanh muối</option>
+      <option value="8000">Xí muội</option>
+      <option value="15000">Sữa tươi</option>
+      <option value="14000">Cam vắt</option>
+    </select>
+  </td>
+  <td>
+    <input type="radio" name="time" value="day" checked> Ban ngày <br>
+    <input type="radio" name="time" value="night"> Ban đêm
+  </td>
+</tr>
+</table>
+
+<br>
+<div style="text-align:center;">
+  <button onclick="tinhTien()">Tính tiền</button>
+</div>
+
+<!-- Kết quả -->
+<div id="ketqua" style="width:400px; margin:10px auto; background-color:#ccffff; padding:10px;"></div>
+
+<script>
+function tinhTien() {
+  let ketqua = document.getElementById("ketqua");
+  ketqua.innerHTML = ""; // xóa nội dung cũ
+
+  // Lấy món ăn được chọn
+  let food = document.getElementById("food");
+  let drink = document.getElementById("drink");
+  let tong = 0;
+  let kq = "<b>Các món đã dùng:</b><br>";
+
+  for (let i = 0; i < food.options.length; i++) {
+    if (food.options[i].selected) {
+      kq += food.options[i].text + " - " + food.options[i].value + "đ<br>";
+      tong += Number(food.options[i].value);
+    }
+  }
+
+  for (let i = 0; i < drink.options.length; i++) {
+    if (drink.options[i].selected) {
+      kq += drink.options[i].text + " - " + drink.options[i].value + "đ<br>";
+      tong += Number(drink.options[i].value);
+    }
+  }
+
+  // Kiểm tra thời điểm
+  let time = document.querySelector('input[name="time"]:checked').value;
+  if (time == "night") {
+    tong = tong * 1.1; // tăng 10%
+  }
+
+  kq += "<b>Tổng tiền: " + tong.toFixed(0) + " đồng</b>";
+  ketqua.innerHTML = kq;
+}
+</script>
+
+</body>
+</html>
