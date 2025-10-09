@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Tính lương tháng</title>
+</head>
+<body>
+    <form>
+        <table border="2" cellpadding="8" cellspacing="0" style="background-color: #ffcc99;margin: auto;border-color: blue;">
+            <tr>
+                <td width="100"><label>Lương:</label></td>
+                <td width="300"><input type="number" id="salary" value="1000000"></td>
+            </tr>
+            <tr>
+                <td><label>Hệ số lương:</label></td>
+                <td>
+                    <select id="heso">
+                        <option value="1.5">1.5</option>
+                        <option value="2.0">2.0</option>
+                        <option value="2.5">2.5</option>
+                        <option value="3.2" selected>3.2</option>
+                        <option value="4.0">4.0</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
+                    <input type="button" style="border-radius: 10px;" value="Tính lương tháng" onclick="calcSalary()">
+                </td>
+            </tr>
+            <tr>
+                <td><label>Lương tháng:</label></td>
+                <td><input type="text" id="result" readonly></td>
+            </tr>
+        </table>
+    </form>
+
+    <script>
+        function calcSalary(){
+            var luong = document.getElementById("salary").value;
+            var heso = document.getElementById("heso").value;
+            var result = luong * heso;
+            document.getElementById("result").value = result;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Xuất thứ trong tuần</title>
+</head>
+<body>
+    <form>
+        <table border="2" cellpadding="8" cellspacing="0" style="background-color: #ffcccc;margin: auto;">
+            <tr>
+                <td>
+                    <label>Ngày</label>
+                    <input type="number" id="day" value="12" min="1" max="31">
+                    <label>Tháng Select:</label>
+                    <select id="month">
+                        <script>
+                            for (let i = 1; i <= 12; i++) {
+                                document.write("<option value='" + i + "'>" + i + "</option>");
+                            }
+                        </script>
+                    </select>
+                    <label>năm</label>
+                    <input type="number" id="year" value="2015" min="1900" max="2100">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
+                    <input type="button" value="Xuất thứ" onclick="xuatThu()">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" id="result" align="center"></td>
+            </tr>
+        </table>
+    </form>
+    <script>
+        function xuatThu() {
+            var day = document.getElementById("day").value;
+            var month = document.getElementById("month").value;
+            var year = document.getElementById("year").value;
+            var date = new Date(year, month - 1, day);
+            var thu = ["Chủ nhật", "Thứ 2", "Thứ 3", "Thứ 4", "Thứ 5", "Thứ 6", "Thứ 7"];
+            var thuTrongTuan = thu[date.getDay()];
+            document.getElementById("result").innerHTML =
+                thuTrongTuan + " Ngày " + day + " tháng " + month + " năm " + year;
+        }
+    </script>
+</body>
+</html>
